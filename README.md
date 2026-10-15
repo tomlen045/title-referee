@@ -2,6 +2,8 @@
 
 **本地离线的公众号标题评分 + 标题党检测工具。** 粘贴标题 → 3 秒出可解释评分报告。
 
+![标题裁判](docs/screenshot.png)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
 [![Zero-dependency](https://img.shields.io/badge/dependencies-0-brightgreen)](app.py)
