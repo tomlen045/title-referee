@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>标题裁判 · 公众号标题评分与标题党检测</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--fg:#e6edf3;--muted:#8b949e;
+--red:#f85149;--orange:#d29922;--yellow:#e3b341;--green:#3fb950;--blue:#58a6ff;--accent:#bc4cff;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+background-image:linear-gradient(rgba(88,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(88,166,255,.03) 1px,transparent 1px);
+background-size:32px 32px;min-height:100vh}
+.wrap{max-width:760px;margin:0 auto;padding:36px 16px 64px}
+.logo{font-size:26px;font-weight:800;letter-spacing:1px}
+.logo .g{color:var(--accent)}
+.tag{color:var(--muted);margin:6px 0 4px;font-size:13px}
+.badges{margin:10px 0 26px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{font-size:12px;color:var(--blue);border:1px solid var(--border);border-radius:20px;padding:2px 12px;background:rgba(88,166,255,.06)}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:18px}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+textarea{width:100%;background:#0d1117;border:1px solid var(--border);border-radius:8px;color:var(--fg);
+font-size:17px;padding:14px;resize:vertical;min-height:72px;outline:none}
+textarea:focus{border-color:var(--accent)}
+.count{font-size:12px;color:var(--muted);text-align:right;margin-top:4px}
+.count b{color:var(--fg)}
+button.cta{width:100%;margin-top:14px;background:linear-gradient(135deg,#bc4cff,#7c3aed);border:none;color:#fff;
+font-size:16px;font-weight:700;padding:13px;border-radius:9px;cursor:pointer;letter-spacing:2px}
+button.cta:hover{filter:brightness(1.15)}
+button.cta:disabled{opacity:.5;cursor:wait}
+.stats{display:flex;gap:12px;margin:18px 0}
+.stat{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.stat .num{font-size:30px;font-weight:800;text-shadow:0 0 18px currentColor}
+.stat .lbl{font-size:12px;color:var(--muted)}
+.res-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.score{font-size:52px;font-weight:800;line-height:1}
+.grade{font-size:22px;font-weight:800;border:2px solid;border-radius:10px;padding:2px 14px}
+.verdict{color:var(--muted);margin-bottom:14px}
+.sec{font-size:13px;font-weight:700;margin:14px 0 8px;letter-spacing:1px}
+.issue{border-left:3px solid var(--border);padding:8px 12px;margin-bottom:8px;background:rgba(255,255,255,.02);border-radius:0 8px 8px 0;font-size:13px}
+.issue .lv{font-weight:700;margin-right:8px}
+.lv.高危{color:var(--red)} .lv.中危{color:var(--orange)} .lv.低危{color:var(--yellow)}
+.issue .ded{float:right;color:var(--red);font-weight:700}
+.good{border-left-color:var(--green)} .good .add{float:right;color:var(--green);font-weight:700}
+.hit{color:var(--red);background:rgba(248,81,73,.12);border-radius:4px;padding:0 4px}
+dl{font-size:13px;color:var(--muted)} dl dt{color:var(--fg);margin-top:8px;font-weight:600}
+.dl{display:block;text-align:center;margin-top:14px;color:var(--blue);font-size:13px}
+footer{margin-top:34px;color:var(--muted);font-size:12px;text-align:center;line-height:2}
+footer a{color:var(--blue)}
+.err{color:var(--red);font-size:13px;margin-top:8px;display:none}
+.warn{margin-top:14px;font-size:12px;color:var(--muted);background:rgba(210,153,34,.08);border:1px solid rgba(210,153,34,.25);border-radius:8px;padding:8px 12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">标题<span class="g">裁判</span> ⚖️</div>
+  <div class="tag">公众号标题评分 + 标题党检测 · 本地离线运行 · 规则全透明</div>
+  <div class="badges">
+    <span class="badge">🔒 纯本地 · 标题不上传</span>
+    <span class="badge">📖 评分理由逐条可解释</span>
+    <span class="badge">🚫 含标题党/违规词检测</span>
+    <span class="badge">📦 零依赖 · 一个 py 文件</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num" id="s-total">100</div><div class="lbl">满分</div></div>
+    <div class="stat"><div class="num" id="s-rules" style="color:var(--blue)">–</div><div class="lbl">检测规则</div></div>
+    <div class="stat"><div class="num" id="s-max" style="color:var(--green)">64</div><div class="lbl">平台字数上限</div></div>
+  </div>
+
+  <div class="panel">
+    <label>粘贴你的公众号标题（也可以顺手测测竞争对手的）</label>
+    <textarea id="title" placeholder="例：我用AI重写了公众号排版流程，3天没睡好，但值得" maxlength="200"></textarea>
+    <div class="count"><b id="cnt">0</b> / 64 字（微信上限）</div>
+    <div class="err" id="err"></div>
+    <button class="cta" id="go" onclick="referee()">开 始 评 判</button>
+  </div>
+
+  <div id="result" style="display:none">
+    <div class="panel">
+      <div class="res-head">
+        <div class="score" id="r-score">0</div>
+        <div class="grade" id="r-grade">-</div>
+      </div>
+      <div class="verdict" id="r-verdict"></div>
+      <div id="r-clickbait" style="display:none;font-size:13px;color:var(--red);margin-bottom:10px">⚠️ 检出标题党/违规高危词 —— 建议重写后再发布</div>
+      <div class="sec">扣 分 项</div><div id="r-issues"></div>
+      <div class="sec">加 分 项</div><div id="r-goods"></div>
+      <div class="sec">规 则 透 明 度</div>
+      <dl>
+        <dt>这套评分怎么算的？</dt>
+        <dd>100 分起步：违规/标题党词逐条扣分（每条都有出处说明），数字/干货词/结构信号加分，长度按移动端展示规律修正。没有任何玄学，每一条扣分都告诉你为什么。</dd>
+      </dl>
+      <a class="dl" id="r-dl" href="#" download>📄 下载评分报告 (.txt)</a>
+      <div class="warn">免责：本工具为本地规则引擎，评分供参考；实际效果受内容质量、账号权重、发布时间影响。发布前请自检「题文一致」。</div>
+    </div>
+  </div>
+
+  <footer>
+    标题裁判 TitleReferee · 开源本地工具<br>
+    判标题，不判人。✍️
+  </footer>
+</div>
+<script>
+function $id(x){return document.getElementById(x)}
+var t=document.getElementById('title');
+t.addEventListener('input',function(){
+  var n=[...t.value].length;
+  document.getElementById('cnt').textContent=n;
+  document.getElementById('cnt').style.color = n>64 ? 'var(--red)' : 'var(--fg)';
+});
+fetch('/api/meta').then(r=>r.json()).then(m=>{
+  document.getElementById('s-rules').textContent = m.rules_clickbait + m.rules_good;
+  document.getElementById('s-max').textContent = m.platform_max;
+}).catch(()=>{});
+function referee(){
+  var v=t.value.trim();
+  var err=document.getElementById('err');
+  if(!v){err.textContent='请先粘贴一个标题';err.style.display='block';return}
+  err.style.display='none';
+  var b=document.getElementById('go');b.disabled=true;b.textContent='评 判 中 …';
+  fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:v})})
+  .then(r=>r.json()).then(d=>{
+    b.disabled=false;b.textContent='开 始 评 判';
+    if(!d.ok){err.textContent=d.error||'评分失败';err.style.display='block';return}
+    var r=d.result;
+    document.getElementById('result').style.display='block';
+    var sc=document.getElementById('r-score');
+    sc.textContent=r.total.toFixed(1);
+    var col = r.total>=72?'var(--green)':r.total>=60?'var(--yellow)':'var(--red)';
+    sc.style.color=col;
+    var g=document.getElementById('r-grade');
+    g.textContent=r.grade;g.style.color=col;g.style.borderColor=col;
+    document.getElementById('r-verdict').textContent=r.verdict;
+    document.getElementById('r-clickbait').style.display=r.clickbait?'block':'none';
+    var ih='';
+    (r.issues||[]).forEach(function(i){
+      ih+='<div class="issue"><span class="ded">-'+i.deduct+'</span><span class="lv '+i.level+'">['+i.level+']</span>'
+        +i.msg+(i.hit?' 命中:<span class="hit">'+i.hit+'</span>':'')+'</div>';
+    });
+    document.getElementById('r-issues').innerHTML=ih||'<div class="issue" style="border-left-color:var(--green)">无扣分项，干净 ✅</div>';
+    var gh='';
+    (r.goods||[]).forEach(function(x){
+      gh+='<div class="issue good"><span class="add">+'+x.add+'</span>'+x.msg+'</div>';
+    });
+    document.getElementById('r-goods').innerHTML=gh||'<div class="issue">无加分项 —— 加个具体数字或干货词试试</div>';
+    document.getElementById('r-dl').href=d.download;
+    document.getElementById('result').scrollIntoView({behavior:'smooth'});
+  }).catch(function(e){
+    b.disabled=false;b.textContent='开 始 评 判';
+    err.textContent='请求失败: '+e;err.style.display='block';
+  });
+}
+t.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();referee()}});
+</script>
+</body>
+</html>
