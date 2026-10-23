@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+  <title id="title">封面实验室的隐私方式与适用边界</title>
+  <desc id="desc">图片在浏览器本地处理，工具不模拟抖音官方裁切，也不预测播放和互动结果。</desc>
+  <rect width="1200" height="440" rx="28" fill="#0b111d"/>
+  <text x="55" y="70" fill="#f3f7ff" font-size="34" font-family="PingFang SC, Microsoft YaHei, sans-serif">先看画面，也要知道它的边界</text>
+  <rect x="55" y="112" width="1090" height="105" rx="19" fill="#111d2d" stroke="#304565"/>
+  <text x="84" y="158" fill="#7be6c2" font-size="25" font-family="PingFang SC, Microsoft YaHei, sans-serif">本地图片</text><text x="278" y="158" fill="#ffd36f" font-size="28">→</text>
+  <text x="330" y="158" fill="#7be6c2" font-size="25" font-family="PingFang SC, Microsoft YaHei, sans-serif">浏览器 Canvas</text><text x="590" y="158" fill="#ffd36f" font-size="28">→</text>
+  <text x="646" y="158" fill="#7be6c2" font-size="25" font-family="PingFang SC, Microsoft YaHei, sans-serif">PNG 导出</text>
+  <text x="84" y="191" fill="#a9bad2" font-size="18" font-family="PingFang SC, Microsoft YaHei, sans-serif">图片不通过上传接口发送；无需第三方图片服务。</text>
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="55" y="246" width="340" height="140" rx="18" fill="#111d2d" stroke="#304565"/><text x="80" y="291" fill="#ffd36f" font-size="23">不模拟</text><text x="80" y="333" fill="#e8eef8" font-size="18">抖音页面精确裁切与控件遮挡</text>
+    <rect x="430" y="246" width="340" height="140" rx="18" fill="#111d2d" stroke="#304565"/><text x="455" y="291" fill="#ffd36f" font-size="23">不预测</text><text x="455" y="333" fill="#e8eef8" font-size="18">播放量、点赞、收藏或涨粉结果</text>
+    <rect x="805" y="246" width="340" height="140" rx="18" fill="#111d2d" stroke="#304565"/><text x="830" y="291" fill="#ffd36f" font-size="23">需复核</text><text x="830" y="333" fill="#e8eef8" font-size="18">不同设备和发布页可能有差异</text>
+  </g>
+  <text x="58" y="419" fill="#9eafc6" font-size="17" font-family="PingFang SC, Microsoft YaHei, sans-serif">标题对比度提示为粗略背景取样，不是 WCAG 合规结论。</text>
+</svg>
