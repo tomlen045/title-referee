@@ -213,7 +213,6 @@ footer{margin-top:18px;color:#76889f;font-size:11px;text-align:center}
     var y=top;
     lay.lines.forEach(function(line){ctx.strokeText(line,lay.margin,y,state.width-lay.margin*2);ctx.fillText(line,lay.margin,y,state.width-lay.margin*2);y+=lay.fontSize*1.23;});
 
-    var luminance=sampleLuminance(lay,pos,top,blockHeight);
     var contrast=$("ink").value==="dark"?(luminance>0.179?"较好":"偏低"):(luminance<0.48?"较好":"偏低");
     $("contrast").textContent=contrast;
     $("contrastCard").classList.toggle("warn",contrast==="偏低");
