@@ -192,6 +192,9 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/":
             with open(os.path.join(STATIC, "index.html"), encoding="utf-8") as f:
                 return self._send(200, f.read())
+        if path == "/cover":
+            with open(os.path.join(STATIC, "cover-lab.html"), encoding="utf-8") as f:
+                return self._send(200, f.read())
         if path == "/api/meta":
             return self._send(200, json.dumps({
                 "rules_clickbait": len(CLICKBAIT_RULES),
