@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">封面实验室界面示意图</title>
+  <desc id="desc">左边为图片和标题控制项，右边为手机宽度预览。</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#101b2a"/><stop offset="1" stop-color="#0b121e"/></linearGradient><linearGradient id="cover" x2="0" y2="1"><stop stop-color="#172c4d"/><stop offset="1" stop-color="#5bb59e"/></linearGradient></defs>
+  <rect width="1200" height="720" rx="28" fill="#090f19"/>
+  <rect x="35" y="35" width="1130" height="650" rx="20" fill="url(#bg)" stroke="#304565"/>
+  <rect x="58" y="58" width="400" height="604" rx="16" fill="#111d2d" stroke="#304565"/>
+  <text x="84" y="102" fill="#f3f7ff" font-size="26" font-family="PingFang SC, Microsoft YaHei, sans-serif">编辑封面</text>
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="84" y="150" fill="#9eafc6" font-size="17">选择图片</text><rect x="82" y="164" width="350" height="42" rx="9" fill="#090f19" stroke="#344966"/><text x="99" y="191" fill="#e3ebf6" font-size="16">本地文件</text>
+    <text x="84" y="239" fill="#9eafc6" font-size="17">预览比例</text><rect x="82" y="253" width="350" height="42" rx="9" fill="#090f19" stroke="#344966"/><text x="99" y="280" fill="#e3ebf6" font-size="16">图文 3:4      视频 9:16</text>
+    <text x="84" y="328" fill="#9eafc6" font-size="17">叠加标题</text><rect x="82" y="342" width="350" height="42" rx="9" fill="#090f19" stroke="#344966"/><text x="99" y="369" fill="#e3ebf6" font-size="16">手机上看，封面字清楚吗？</text>
+    <text x="84" y="417" fill="#9eafc6" font-size="17">标题位置 / 颜色</text><rect x="82" y="431" width="350" height="42" rx="9" fill="#090f19" stroke="#344966"/><text x="99" y="458" fill="#e3ebf6" font-size="16">偏下        白字</text>
+    <text x="84" y="506" fill="#9eafc6" font-size="17">缩放、裁切与留白</text><rect x="82" y="520" width="350" height="5" rx="3" fill="#405776"/><rect x="82" y="520" width="160" height="5" rx="3" fill="#72e7c0"/><circle cx="242" cy="522" r="11" fill="#9df1d2"/>
+    <rect x="82" y="570" width="350" height="48" rx="11" fill="#63d9b3"/><text x="174" y="601" fill="#09251d" font-size="19" font-weight="700">导出封面 PNG</text>
+  </g>
+  <rect x="482" y="58" width="658" height="604" rx="16" fill="#111d2d" stroke="#304565"/>
+  <text x="514" y="103" fill="#f3f7ff" font-size="25" font-family="PingFang SC, Microsoft YaHei, sans-serif">手机宽度预览</text>
+  <rect x="667" y="132" width="286" height="430" rx="23" fill="url(#cover)"/>
+  <circle cx="890" cy="218" r="60" fill="#78dfc2" opacity=".8"/><rect x="690" y="155" width="240" height="383" rx="12" fill="none" stroke="#caffed" stroke-width="2"/>
+  <rect x="698" y="388" width="225" height="103" rx="14" fill="#070d16"/><text x="717" y="429" fill="#fff" font-size="22" font-family="PingFang SC, Microsoft YaHei, sans-serif">手机上看，</text><text x="717" y="461" fill="#fff" font-size="22" font-family="PingFang SC, Microsoft YaHei, sans-serif">封面字清楚吗？</text>
+  <rect x="536" y="585" width="550" height="43" rx="10" fill="#09111c" stroke="#2d405d"/><text x="560" y="613" fill="#8ce9cb" font-size="17" font-family="PingFang SC, Microsoft YaHei, sans-serif">画布 3:4</text><text x="695" y="613" fill="#a9bad2" font-size="16" font-family="PingFang SC, Microsoft YaHei, sans-serif">图示为界面示意</text>
+</svg>
