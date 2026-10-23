@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" role="img" aria-labelledby="title desc">
+  <title id="title">封面实验室四步操作流程</title>
+  <desc id="desc">选择本地图片、切换画布比例、调整构图与标题、导出图片。</desc>
+  <rect width="1200" height="460" rx="28" fill="#0b111d"/>
+  <text x="55" y="72" fill="#f3f7ff" font-size="36" font-family="PingFang SC, Microsoft YaHei, sans-serif">把封面检查变成四个动作</text>
+  <text x="58" y="115" fill="#9eafc6" font-size="21" font-family="PingFang SC, Microsoft YaHei, sans-serif">每一步都在同一页完成，图片从本机选择。</text>
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+    <rect x="55" y="165" width="250" height="210" rx="22" fill="#111d2d" stroke="#304565"/>
+    <circle cx="93" cy="210" r="23" fill="#173d39" stroke="#4f9c84"/><text x="80" y="218" fill="#8ce9cb" font-size="19">01</text>
+    <text x="79" y="270" fill="#f3f7ff" font-size="25">选图片</text><text x="79" y="312" fill="#a9bad2" font-size="17">JPG / PNG / WebP</text><text x="79" y="341" fill="#a9bad2" font-size="17">浏览器本地读取</text>
+    <rect x="345" y="165" width="250" height="210" rx="22" fill="#111d2d" stroke="#304565"/>
+    <circle cx="383" cy="210" r="23" fill="#173d39" stroke="#4f9c84"/><text x="370" y="218" fill="#8ce9cb" font-size="19">02</text>
+    <text x="369" y="270" fill="#f3f7ff" font-size="25">切换比例</text><text x="369" y="312" fill="#a9bad2" font-size="17">图文 3:4</text><text x="369" y="341" fill="#a9bad2" font-size="17">视频 9:16</text>
+    <rect x="635" y="165" width="250" height="210" rx="22" fill="#111d2d" stroke="#304565"/>
+    <circle cx="673" cy="210" r="23" fill="#173d39" stroke="#4f9c84"/><text x="660" y="218" fill="#8ce9cb" font-size="19">03</text>
+    <text x="659" y="270" fill="#f3f7ff" font-size="25">调整画面</text><text x="659" y="312" fill="#a9bad2" font-size="17">裁切、标题位置</text><text x="659" y="341" fill="#a9bad2" font-size="17">颜色与预览留白</text>
+    <rect x="925" y="165" width="220" height="210" rx="22" fill="#111d2d" stroke="#304565"/>
+    <circle cx="963" cy="210" r="23" fill="#173d39" stroke="#4f9c84"/><text x="950" y="218" fill="#8ce9cb" font-size="19">04</text>
+    <text x="949" y="270" fill="#f3f7ff" font-size="25">导出 PNG</text><text x="949" y="312" fill="#a9bad2" font-size="17">保留标题</text><text x="949" y="341" fill="#a9bad2" font-size="17">不带预览线</text>
+  </g>
+  <g fill="#ffd36f"><path d="M313 264h22v-9l16 13-16 13v-9h-22z"/><path d="M603 264h22v-9l16 13-16 13v-9h-22z"/><path d="M893 264h22v-9l16 13-16 13v-9h-22z"/></g>
+</svg>
